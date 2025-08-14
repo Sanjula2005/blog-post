@@ -1,0 +1,19 @@
+<%- include('partials/header') %>
+<h2 class="text-center mb-4">Create New Post</h2>
+
+<div class="card shadow p-4">
+  <form action="/new" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <input type="text" name="title" placeholder="Title" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <textarea name="content" placeholder="Content" rows="5" class="form-control" required></textarea>
+    </div>
+    <div class="mb-3">
+      <input type="file" name="image" accept="image/*" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Post</button>
+  </form>
+</div>
+
+<%- include('partials/footer') %>

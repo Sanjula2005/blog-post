@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+<h2 class="text-center mb-4">Edit Post</h2>
+
+<div class="card shadow p-4">
+  <form action="/edit/<%= post.id %>" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <input type="text" name="title" value="<%= post.title %>" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <textarea name="content" rows="5" class="form-control" required><%= post.content %></textarea>
+    </div>
+    <% if (post.image) { %>
+      <p>Current Image:</p>
+      <img src="<%= post.image %>" class="img-fluid mb-3" style="max-height: 200px;">
+    <% } %>
+    <div class="mb-3">
+      <input type="file" name="image" accept="image/*" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-success">Update Post</button>
+  </form>
+</div>
+
+<%- include('partials/footer') %>

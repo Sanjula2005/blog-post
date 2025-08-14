@@ -1,0 +1,30 @@
+<%- include('partials/header') %>
+<h2 class="text-center mb-4">All Posts</h2>
+
+<% if (posts.length === 0) { %>
+  <div class="alert alert-info text-center">
+    No posts yet. <a href="/new" class="btn btn-primary btn-sm">Create one!</a>
+  </div>
+<% } else { %>
+  <div class="row">
+    <% posts.forEach(post => { %>
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+          <% if (post.image) { %>
+            <img src="<%= post.image %>" class="card-img-top" alt="Post Image" style="object-fit: cover; height: 200px;">
+          <% } %>
+          <div class="card-body">
+            <h5 class="card-title"><%= post.title %></h5>
+            <p class="card-text"><%= post.content %></p>
+            <a href="/edit/<%= post.id %>" class="btn btn-warning btn-sm">Edit</a>
+            <form action="/delete/<%= post.id %>" method="POST" class="d-inline">
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+
+<%- include('partials/footer') %>
